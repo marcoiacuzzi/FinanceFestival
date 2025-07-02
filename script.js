@@ -1,55 +1,55 @@
-/* Reset y caja en toda la app */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: sans-serif;
-  overflow: hidden;
+// 1) Configuración de Google Sheets
+//    Reemplaza el ID por el tuyo (el que copiaste entre /d/ y /edit)
+const SHEET_ID = '1PBCymQB0foj89czOTRWGCZYDOtNE5rkuJrJnXjjrtpQ';
+//    Y pon aquí el nombre exacto de la pestaña de tu hoja
+const SHEET_NAME = 'Agenda';
+
+// URL para obtener JSON desde la hoja publicada
+const urlAgenda = 
+  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+// 2) Función para fetch y parsear el JSON de Google
+async function fetchAgenda() {
+  const res  = await fetch(urlAgenda);
+  const text = await res.text();
+  // Google envuelve el JSON entre paréntesis: extraemos solo el objeto
+  const json = JSON.parse(text.match(/(?<=\().*(?=\);)/)[0]);
+  return json.table.rows;
 }
 
-/* Cada “pantalla” ocupa todo el viewport */
-.screen {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 1rem;
-}
-.screen.active {
-  display: flex;
+// 3) Renderiza la agenda dentro del <div id="agenda">
+async function renderAgenda() {
+  const rows      = await fetchAgenda();
+  const container = document.getElementById('agenda');
+  container.innerHTML = ''; // limpia contenido previo
+
+  rows.forEach(r => {
+    // r.c[0] => primera columna (Hora), r.c[1] => segunda columna (Tema)
+    const hora = r.c[0]?.v || '';
+    const tema = r.c[1]?.v || '';
+    const btn  = document.createElement('button');
+    btn.textContent = `${hora} — ${tema}`;
+    container.appendChild(btn);
+  });
 }
 
-/* Botones grandes y táctiles */
-button {
-  width: 80%;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #0057e7;
-  color: white;
-  cursor: pointer;
+// 4) Muestra la “pantalla” cuyo id recibe, ocultando las demás
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.toggle('active', s.id === id);
+  });
 }
 
-/* Contenedor de la agenda con scroll si hace falta */
-#agenda {
-  width: 100%;
-  flex: 1;
-  overflow-y: auto;
-  margin-bottom: 1rem;
-}
-/* Estilo específico para los ítems de la agenda */
-#agenda button {
-  background-color: #f0f0f0;
-  color: #333;
-}
-/* Botón “Volver” distinto color */
-#backFromAgenda {
-  background-color: #777;
-}
+// 5) Al arrancar la página, conectamos botones y lógica
+document.addEventListener('DOMContentLoaded', () => {
+  // Botón del menú que abre la agenda
+  document.getElementById('btnAgenda').addEventListener('click', () => {
+    showScreen('agendaScreen');
+    renderAgenda();
+  });
+
+  // Botón de “volver” dentro de la pantalla de agenda
+  document.getElementById('backFromAgenda').addEventListener('click', () => {
+    showScreen('menu');
+  });
+});
