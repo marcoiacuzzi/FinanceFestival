@@ -53,3 +53,17 @@ button {
 #backFromAgenda {
   background-color: #777;
 }
+
+/* Colores específicos para cada tipo de agenda */
+.btn-main {
+  background-color: #0057e7;  /* mismo azul que tus botones “Agenda” */
+  color: #fff;
+}
+.btn-tradifi {
+  background-color: #B3E5FC;  /* celestito pastel */
+  color: #000;
+}
+.btn-defi {
+  background-color: #E0B3FF;  /* violeta pastel */
+  color: #000;
+}
