@@ -90,3 +90,18 @@ button {
   height: 75vh;             /* O el tamaño que más te acomode */
   border: none;
 }
+
+/* Botón de reseña */
+#btnResena {
+  background-color: #28a745;  /* ejemplo: verde */
+  color: white;
+  width: 80%;                 /* igual que los demás */
+  margin: 0.5rem auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+}
+
