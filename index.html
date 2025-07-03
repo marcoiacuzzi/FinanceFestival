@@ -16,7 +16,20 @@
   <!-- Pantalla de Agenda -->
   <div id="agendaScreen" class="screen">
     <h1>Agenda Interactiva</h1>
-    <div id="agenda"></div>
+
+    <!-- Sub-menú de categorías -->
+    <div id="agendaOptions" class="sub-menu">
+      <button data-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vQv_Kko-e7Wy-i7fOLL5iZQrEFFLjvlh2QfqOwLJZeSvl5FYtHV5C8VGL8UA6AM2OI4myUMQKJcnj6O/pubhtml?gid=0&single=true"   class="btn-main">Agenda Main</button>
+      <button data-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vQv_Kko-e7Wy-i7fOLL5iZQrEFFLjvlh2QfqOwLJZeSvl5FYtHV5C8VGL8UA6AM2OI4myUMQKJcnj6O/pubhtml?gid=480440681&single=true"class="btn-tradifi">Workshop TradiFi</button>
+      <button data-url="https://docs.google.com/spreadsheets/d/e/2PACX-1vQv_Kko-e7Wy-i7fOLL5iZQrEFFLjvlh2QfqOwLJZeSvl5FYtHV5C8VGL8UA6AM2OI4myUMQKJcnj6O/pubhtml?gid=315532814&single=true"   class="btn-defi">Workshop DeFi</button>
+    </div>
+
+    <!-- Aquí cargará el rango A1:H22 de la pestaña seleccionada -->
+    <iframe id="agendaFrame"
+            frameborder="0"
+            style="width:100%; height:75vh;">
+    </iframe>
+
     <button id="backFromAgenda">Volver al menú</button>
   </div>
 
