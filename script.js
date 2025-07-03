@@ -1,33 +1,32 @@
-
-// 2) Muestra/oculta pantallas
-function showScreen(id) {
-  document.querySelectorAll('.screen')
-          .forEach(s => s.classList.toggle('active', s.id === id));
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   const btnAgenda    = document.getElementById('btnAgenda');
   const btnBack      = document.getElementById('backFromAgenda');
   const optionsDiv   = document.getElementById('agendaOptions');
   const iframe       = document.getElementById('agendaFrame');
 
-  // Al pulsar “Agenda” vamos al sub-menú
+  // Pulsar “Agenda” → muestro la pantalla de agenda y dejo el submenú
   btnAgenda.addEventListener('click', () => {
     showScreen('agendaScreen');
-    // Limpiamos el iframe hasta que escojan una pestaña
+    // Opcional: limpiar src antiguo
     iframe.src = '';
+    // Me aseguro de que el sub-menú se vea al entrar
+    optionsDiv.style.display = 'flex';
   });
 
-  // Botón “Volver”
-  btnBack.addEventListener('click', () => {
-    showScreen('menu');
-  });
-
-  // Cada botón del sub-menú cambia la URL del iframe
+  // Cada botón del sub-menú carga la URL y oculta el menú
   optionsDiv.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
-      const url = btn.dataset.url;
-      iframe.src = url;
+      iframe.src = btn.dataset.url;
+      // Oculto el sub-menú para que el iframe suba arriba
+      optionsDiv.style.display = 'none';
     });
+  });
+
+  // “Volver” vuelve al menú principal y resetea todo
+  btnBack.addEventListener('click', () => {
+    showScreen('menu');
+    // Si vuelves a Agenda, querrás ver otra vez las opciones
+    optionsDiv.style.display = 'flex';
+    iframe.src = '';
   });
 });
