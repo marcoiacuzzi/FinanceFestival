@@ -71,4 +71,14 @@ button {
   display: block;
   margin: 0.5rem auto;
 }
+/* Coloca esto en style.css al final */
+.sub-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.sub-menu button {
+  margin: 0.25rem 0;
+}
 
