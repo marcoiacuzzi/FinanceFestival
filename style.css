@@ -67,3 +67,8 @@ button {
   background-color: #E0B3FF;  /* violeta pastel */
   color: #000;
 }
+#agenda button {
+  display: block;
+  margin: 0.5rem auto;
+}
+
