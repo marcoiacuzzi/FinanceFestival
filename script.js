@@ -3,9 +3,9 @@ const SHEET_ID = '1PBCymQB0foj89czOTRWGCZYDOtNE5rkuJrJnXjjrtpQ';
 
 // 2) Listado de pestañas
 const SHEET_TABS = {
-  main:   'Main',
-  tradiFi:'Workshop TradiFi',
-  defi:   'Workshop DeFi'
+  main:    'Main',
+  tradiFi: 'Workshop TradiFi',
+  defi:    'Workshop DeFi'
 };
 
 // 3) Construye la URL para la pestaña seleccionada
@@ -27,9 +27,9 @@ function renderAgendaOptions() {
   const container = document.getElementById('agenda');
   container.innerHTML = '';
   [
-    { key: 'main',    text: 'Agenda Main',               cls: 'btn-main'   },
-    { key: 'tradiFi', text: 'Agenda Workshop TradiFi',    cls: 'btn-tradifi'},
-    { key: 'defi',    text: 'Agenda Workshop DeFi',          cls: 'btn-defi'   }
+    { key: 'main',    text: 'Agenda Main',             cls: 'btn-main'   },
+    { key: 'tradiFi', text: 'Agenda Workshop TradiFi', cls: 'btn-tradifi'},
+    { key: 'defi',    text: 'Agenda Workshop DeFi',    cls: 'btn-defi'   }
   ].forEach(item => {
     const btn = document.createElement('button');
     btn.textContent = item.text;
@@ -69,21 +69,20 @@ async function loadAndShow(key) {
 // 7) Muestra/oculta pantallas
 function showScreen(id) {
   document.querySelectorAll('.screen')
-          .forEach(s => s.classList.toggle('active', s.id === id));
+    .forEach(s => s.classList.toggle('active', s.id === id));
 }
 
 // 8) Enlaza eventos al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btnAgenda')
-          .addEventListener('click', () => {
+  const btnAgenda = document.getElementById('btnAgenda');
+  const btnBack   = document.getElementById('backFromAgenda');
+
+  btnAgenda.addEventListener('click', () => {
     showScreen('agendaScreen');
     renderAgendaOptions();
   });
-  document.getElementById('backFromAgenda')
-          .addEventListener('click', () => showScreen('menu'));
-});
 
-  document.getElementById('backFromAgenda').addEventListener('click', () => {
+  btnBack.addEventListener('click', () => {
     showScreen('menu');
   });
 });
