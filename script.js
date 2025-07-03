@@ -1,4 +1,3 @@
-// 1) En tu index.html ya pusiste las URLs en data-url, no hace falta más config.
 
 // 2) Muestra/oculta pantallas
 function showScreen(id) {
