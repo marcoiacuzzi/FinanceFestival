@@ -1,0 +1,135 @@
+/* style.css /
+/ ─── Paleta de colores ───────────────────────────────── */
+:root {
+--color-oscuro:   #05252F;
+--color-lima:     #89E73A;
+--color-cian:     #02D3DE;
+--color-azul:     #1168F8;
+--color-magenta:  #B113DF;
+--color-blanco:   #FFFFFF;
+
+}
+
+/* Reset y estilos globales */
+
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Russo One', sans-serif;
+}
+
+html, body {
+width: 100%;
+height: 100%;
+background: var(--color-oscuro);
+color: var(--color-lima);
+text-align: center;
+}
+
+body {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1rem;
+}
+
+.screen {
+display: none;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+height: 100vh;
+}
+.screen.active {
+display: flex;
+}
+
+/* Títulos en blanco */
+#menu h1 {
+color: #FFFFFF;
+}
+
+/* ── Botones generales ───────────────────────────────────────── */
+button {
+display: block;
+width: 80%;
+max-width: 300px;
+padding: 1rem 0;
+margin: 0.5rem auto;
+font-size: 1.25rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: filter 0.2s ease, transform 0.2s ease;
+color: #fff;
+}
+button:hover {
+filter: brightness(0.9);
+transform: scale(1.03);
+}
+
+/* ── Clases específicas con su fondo y su texto ───────────────── */
+.btn-main {
+background: var(--color-azul);
+color: #ffffff;
+}
+.btn-tradifi {
+background: var(--color-cian);
+color: var(--color-oscuro);
+}
+.btn-defi {
+background: var(--color-magenta);
+color: var(--color-oscuro);
+}
+#btnResena {
+background: var(--color-lima);
+color: var(--color-oscuro);
+}
+
+/* Botones principales (Agenda y Volver) en magenta */
+#btnAgenda{
+  background: var(--color-magenta);  /* magenta/violeta */
+  color: var(--color-oscuro);       /* texto oscuro para contraste */
+}
+
+#backFromAgenda {
+  background: var(--color-blanco);  
+  color: var(--color-oscuro);       
+}
+
+
+/* Contenedor de la agenda */
+#agendaOptions {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+#agendaFrame {
+width: 100%;
+height: 75vh;
+border: none;
+border-radius: 8px;
+}
+
+#agenda {
+width: 100%;
+flex: 1;
+overflow-y: auto;
+margin-top: 1rem;
+text-align: center;
+}
+
+/* Estilo del logo */
+#logo {
+  display: block;
+  width: 250px;       /* antes era 150px, ajústalo al valor que necesites */
+  max-width: 110%;     /* evita que desborde en móvil */
+  height: auto;       /* mantiene la proporción */
+  margin: 0 auto 1rem;
+}
+
