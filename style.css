@@ -32,28 +32,50 @@ height: 100vh;
 .screen.active {
 display: flex;
 }
+/* ── Botones generales ───────────────────────────────────────── */
 button {
-width: 80%;
-padding: 1.5rem;
-font-family: 'Breul Grotesk', sans-serif;
-font-size: 1.25rem;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-margin: 1rem 0;
-border-radius: 8px;
-cursor: pointer;
-transition: transform 0.2s, box-shadow 0.2s;
-}
-button:hover {
-transform: scale(1.05);
-box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  width: 80%;
+  padding: 1.5rem;
+  font-family: 'Breul Grotesk', sans-serif;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 1rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  /* Asegúrate de que por defecto el texto sea legible */
+  color: white;
 }
 
-/* Colores de botones */
-.btn-main    { background: var(--color-azul);   color: #fff; }
-.btn-tradifi { background: var(--color-cian);   color: #07222e; }
-.btn-defi    { background: var(--color-magenta);color: #07222e; }
-#btnResena   { background: var(--color-lima);   color: #07222e; }
+/* Hover para todos */
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* ── Clases específicas con su fondo y su texto ───────────────── */
+.btn-main {
+  background-color: var(--color-azul);
+  /* texto blanco para contraste */
+  color: #ffffff !important;
+}
+
+.btn-tradifi {
+  background-color: var(--color-cian);
+  /* texto oscuro sobre fondo claro */
+  color: #07222e !important;
+}
+
+.btn-defi {
+  background-color: var(--color-magenta);
+  color: #07222e !important;
+}
+
+#btnResena {
+  background-color: var(--color-lima);
+  color: #07222e !important;
+}
 
 #agenda {
 width: 100%;
