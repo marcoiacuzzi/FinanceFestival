@@ -1,107 +1,65 @@
-/* Reset y caja en toda la app */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: sans-serif;
-  overflow: hidden;
+
+/ ─── Paleta de colores ───────────────────────────────── /
+
+:root {
+--color-oscuro:   #05252F;  / fondo muy oscuro /
+--color-lima:     #89E73A;  / lima /
+--color-cian:     #02D3DE;  / cian brillante /
+--color-azul:     #1168F8;  / azul vívido /
+--color-magenta:  #B113DF;  / magenta/violeta */
 }
 
-/* Cada “pantalla” ocupa todo el viewport */
+/* Reset y estilos globales */
+
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+font-family: 'Pixelion', monospace;
+background: var(--color-oscuro);
+color: var(--color-lima);
+padding: 1rem;
+}
 .screen {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 1rem;
+display: none;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+height: 100vh;
 }
 .screen.active {
-  display: flex;
+display: flex;
 }
-
-/* Botones grandes y táctiles */
 button {
-  width: 80%;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #0057e7;
-  color: white;
-  cursor: pointer;
+width: 80%;
+padding: 1.5rem;
+font-family: 'Breul Grotesk', sans-serif;
+font-size: 1.25rem;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+margin: 1rem 0;
+border-radius: 8px;
+cursor: pointer;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+button:hover {
+transform: scale(1.05);
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* Contenedor de la agenda con scroll si hace falta */
+/* Colores de botones */
+.btn-main    { background: var(--color-azul);   color: #fff; }
+.btn-tradifi { background: var(--color-cian);   color: #07222e; }
+.btn-defi    { background: var(--color-magenta);color: #07222e; }
+#btnResena   { background: var(--color-lima);   color: #07222e; }
+
 #agenda {
-  width: 100%;
-  flex: 1;
-  overflow-y: auto;
-  margin-bottom: 1rem;
-}
-/* Estilo específico para los ítems de la agenda */
-#agenda button {
-  background-color: #f0f0f0;
-  color: #333;
-}
-/* Botón “Volver” distinto color */
-#backFromAgenda {
-  background-color: #777;
-}
-
-/* Colores específicos para cada tipo de agenda */
-.btn-main {
-  background-color: #0057e7;  /* mismo azul que tus botones “Agenda” */
-  color: #fff;
-}
-.btn-tradifi {
-  background-color: #B3E5FC;  /* celestito pastel */
-  color: #000;
-}
-.btn-defi {
-  background-color: #E0B3FF;  /* violeta pastel */
-  color: #000;
-}
-#agenda button {
-  display: block;
-  margin: 0.5rem auto;
-}
-/* Coloca esto en style.css al final */
-.sub-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.sub-menu {
-  display: flex;             /* Pueden ser row o column según prefieras */
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-#iframe {
-  width: 100%;
-  height: 75vh;             /* O el tamaño que más te acomode */
-  border: none;
-}
-
-/* Botón de reseña */
-#btnResena {
-  background-color: #28a745;  /* ejemplo: verde */
-  color: white;
-  width: 80%;                 /* igual que los demás */
-  margin: 0.5rem auto;
-  padding: 1rem;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: block;
+width: 100%;
+flex: 1;
+overflow-y: auto;
+margin-top: 1rem;
+text-align: center;
 }
 
