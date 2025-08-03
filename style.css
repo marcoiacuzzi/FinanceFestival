@@ -98,8 +98,10 @@ color: var(--color-oscuro);
 #backFromAgenda {
   background: var(--color-blanco);  
   color: var(--color-oscuro);       
+ 
   /* margen inferior fijo para pantallas normales */
   margin-bottom: 2rem;
+  
   
 }
 

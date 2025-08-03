@@ -8,29 +8,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnAgenda    = document.getElementById('btnAgenda');
   const btnBack      = document.getElementById('backFromAgenda');
   const optionsDiv   = document.getElementById('agendaOptions');
-  const iframe       = document.getElementById('agendaFrame');
+  const agendaImage  = document.getElementById('agendaImage');
 
-  // 2) Cuando pulsan “Agenda”: vamos a la pantalla de agenda
+  // 2) Mostrar pantalla de agenda
   btnAgenda.addEventListener('click', () => {
     showScreen('agendaScreen');
     optionsDiv.style.display = 'flex';
-    iframe.src = ''; // limpio cualquier src previo
+    agendaImage.style.display = 'none'; // ocultar imagen previa
+    agendaImage.src = '';
   });
 
-  // 3) Cada botón del sub-menú carga su URL y oculta el menú
+  // 3) Mostrar imagen correspondiente según el botón
   optionsDiv.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
-      const url = btn.dataset.url;
-      iframe.src = url;
+      let imageSrc = '';
+
+      if (btn.classList.contains('btn-main'))     imageSrc = 'main.png';
+      if (btn.classList.contains('btn-tradifi'))  imageSrc = 'tradifi.png';
+      if (btn.classList.contains('btn-defi'))     imageSrc = 'defi.png';
+
+      if (imageSrc) {
+        agendaImage.src = imageSrc;
+        agendaImage.style.display = 'block';
+      }
+
       optionsDiv.style.display = 'none';
     });
   });
 
-  // 4) “Volver al menú” regresa a la pantalla principal
+  // 4) Volver al menú
   btnBack.addEventListener('click', () => {
     showScreen('menu');
-    // Preparamos para la próxima vez que entren en Agenda
     optionsDiv.style.display = 'flex';
-    iframe.src = '';
+    agendaImage.style.display = 'none';
+    agendaImage.src = '';
   });
 });
